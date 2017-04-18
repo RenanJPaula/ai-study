@@ -11,6 +11,6 @@ const solutionState = new State([[1, 2, 3],
                                  [4, 0, 5],
                                  [6, 7, 8]])
 
-initialState.getNextActions().forEach(state => state.print())
-
-new Bfs(solutionState).solve(initialState)
+const solver = new Bfs(solutionState)
+solver.solve(initialState)
+solver.print()

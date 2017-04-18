@@ -41,9 +41,12 @@ class State {
     return true
   }
 
-  print () {
-    this.board.forEach(line => console.log(line.join(' | ')))
-    console.log('\n')
+  toString () {
+    return this.board.reduce((previousValue, currentValue) => {
+      previousValue += currentValue.join(' | ')
+      previousValue += '\n'
+      return previousValue
+    }, '')
   }
 }
 
