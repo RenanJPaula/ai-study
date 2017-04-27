@@ -41,7 +41,7 @@ function withoutRevisitNodesBfs (initialState, solutionState, solutionSet = {}) 
   }
 
   while (queue.length > 0) {
-    let state = queue.shift()
+    let state = queue.pop()
     visitedStates[state.toString()] = true
 
     if (state.isSolve(solutionState)) return true
