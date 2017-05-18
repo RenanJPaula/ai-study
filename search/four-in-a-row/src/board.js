@@ -15,8 +15,4 @@ Board.prototype.from = function (stringData) {
   }
 }
 
-Board.prototype.play = function () {
-  return 0
-}
-
 module.exports = Board

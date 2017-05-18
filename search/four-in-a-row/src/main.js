@@ -8,7 +8,7 @@ var rl = readline.createInterface({
   output: process.stdout,
   terminal: false
 })
-var Board = require('./board')
+var Bot = require('./the-deth-start')
 
 rl.on('line', function (input) {
   parser.exec(input)
@@ -23,5 +23,5 @@ parser.on('update', function () {
 })
 
 parser.on('action', function (actionName, time) {
-  console.log('place_disc ' + new Board().play())
+  console.log('place_disc ' + new Bot().play())
 })

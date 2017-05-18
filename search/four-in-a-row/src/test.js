@@ -1,6 +1,6 @@
 'use strict'
 
-var Board = require('./board')
+var Bot = require('./the-deth-start')
 var options = {
   player: 1,
   cols: 7,
@@ -17,7 +17,7 @@ function testHorizontalWin () {
     [0, 0, 0, 1, 1, 1, 0]
   ]
 
-  var colToPlay = new Board(options).play()
+  var colToPlay = new Bot(options).play()
   console.log('Horizontal win possibility', colToPlay === 2 || colToPlay === 6)
 }
 
@@ -31,7 +31,7 @@ function testVerticalWin () {
     [0, 0, 0, 1, 2, 2, 2]
   ]
 
-  var colToPlay = new Board(options).play()
+  var colToPlay = new Bot(options).play()
   console.log('Vertical win possibility', colToPlay === 3)
 }
 
@@ -45,7 +45,7 @@ function testDiagonalRightBottom () {
     [1, 1, 2, 1, 1, 1, 2]
   ]
 
-  var colToPlay = new Board(options).play()
+  var colToPlay = new Bot(options).play()
   console.log('Diagonal right-bottom win possibility', colToPlay === 4)
 }
 
@@ -59,7 +59,7 @@ function testDiagonalLeftBottom () {
     [1, 2, 2, 1, 2, 1, 1]
   ]
 
-  var colToPlay = new Board(options).play()
+  var colToPlay = new Bot(options).play()
   console.log('Diagonal left-bottom win possibility', colToPlay === 3)
 }
 
