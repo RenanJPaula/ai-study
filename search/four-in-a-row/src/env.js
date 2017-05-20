@@ -15,5 +15,5 @@ module.exports = {
   losScore: -100000,
   alpha: Number.MIN_VALUE,
   beta: Number.MAX_VALUE,
-  depth: 1
+  depth: 8
 }

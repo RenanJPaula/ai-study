@@ -61,7 +61,7 @@ events['update game field'] = function (field) {
 }
 
 events['action move'] = function () {
-  makeTurn(new State(board))
+  console.log('place_disc ' + makeTurn(new State(board)))
 }
 
 function makeTurn (state) {
