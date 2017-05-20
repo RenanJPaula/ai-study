@@ -45,6 +45,7 @@ function testHorizontalWin () {
   ])
 
   var colToPlay = bot(state)
+  console.log(colToPlay)
   console.log('Horizontal win possibility', colToPlay === 2 || colToPlay === 6)
 }
 
@@ -59,6 +60,7 @@ function testVerticalWin () {
   ])
 
   var colToPlay = bot(state)
+  console.log(colToPlay)
   console.log('Vertical win possibility', colToPlay === 3)
 }
 
@@ -73,6 +75,7 @@ function testDiagonalRightBottom () {
   ])
 
   var colToPlay = bot(state)
+  console.log(colToPlay)
   console.log('Diagonal right-bottom win possibility', colToPlay === 4)
 }
 
@@ -87,6 +90,7 @@ function testDiagonalLeftBottom () {
   ])
 
   var colToPlay = bot(state)
+  console.log(colToPlay)
   console.log('Diagonal left-bottom win possibility', colToPlay === 3)
 }
 

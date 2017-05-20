@@ -62,7 +62,7 @@ minMax.min = function (state, alpha, beta, depth) {
       }
 
       // if v ≤ α return v
-      if (value.score <= beta) {
+      if (value.score <= alpha) {
         return value
       }
 
