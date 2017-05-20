@@ -1,27 +1,72 @@
-'use strict'
 // __main__
+'use strict'
 
-var parser = require('./parser')
+var env = require('./env')
+var State = require('./model/state')
+var util = require('./util')
+var minMax = require('./ia/min-max')
 var readline = require('readline')
 var rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
   terminal: false
 })
-var Bot = require('./the-deth-start')
+var events = {}
+var board = null
 
 rl.on('line', function (input) {
-  parser.exec(input)
+  for (var envent in events) {
+    if (input.startsWith(envent)) {
+      var cb = events[envent]
+      var params = input.split(envent).pop().trim().split(' ')
+      if (cb) cb.apply(null, params)
+    }
+  }
 })
 
-parser.on('settings', function (prop, value) {
+events['settings timebank'] = function (timebank) {
+  env.timebank = parseInt(timebank)
+}
 
-})
+events['settings time_per_move'] = function (timePerMove) {
+  env.timebank = parseInt(timePerMove)
+}
 
-parser.on('update', function () {
+events['settings player_names'] = function (playerNames) {
+  env.playerNames = playerNames
+}
 
-})
+events['settings your_bot'] = function (botName) {
+  env.botName = botName
+}
 
-parser.on('action', function (actionName, time) {
-  console.log('place_disc ' + new Bot().play())
-})
+events['settings your_botid'] = function (botId) {
+  env.myId = botId
+}
+
+events['settings field_columns'] = function (cols) {
+  env.cols = parseInt(cols)
+}
+
+events['settings field_rows'] = function (rows) {
+  env.rows = parseInt(rows)
+}
+
+events['update game round'] = function (round) {
+  env.round = parseInt(round)
+}
+
+events['update game field'] = function (field) {
+  board = util.parse(field)
+}
+
+events['action move'] = function () {
+  makeTurn(new State(board))
+}
+
+function makeTurn (state) {
+  var botPlay = minMax.max(state, env.alpha, env.beta, env.depth)
+  return botPlay.col
+}
+
+module.exports = makeTurn
