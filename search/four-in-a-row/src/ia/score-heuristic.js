@@ -3,10 +3,19 @@
 var env = require('../env')
 
 module.exports.score = function (state) {
-  return scoreVertical(state.board) +
-         scoreHorizontal(state.board) +
-         scoreDiagonalLeftBottom(state.board) +
-         scoreDiagonalRightBottom(state.board)
+  var mScoreVertical = scoreVertical(state.board)
+  if (mScoreVertical === env.winScore || mScoreVertical === env.losScore) return mScoreVertical
+
+  var mScoreHorizontal = scoreHorizontal(state.board)
+  if (mScoreHorizontal === env.winScore || mScoreHorizontal === env.losScore) return mScoreHorizontal
+
+  var mScoreDiagonalLeftBottom = scoreDiagonalLeftBottom(state.board)
+  if (mScoreDiagonalLeftBottom === env.winScore || mScoreDiagonalLeftBottom === env.losScore) return mScoreDiagonalLeftBottom
+
+  var mScoreDiagonalRightBottom = scoreDiagonalRightBottom(state.board)
+  if (mScoreDiagonalRightBottom === env.winScore || mScoreDiagonalRightBottom === env.losScore) return mScoreDiagonalRightBottom
+
+  return mScoreVertical + mScoreHorizontal + mScoreDiagonalLeftBottom + mScoreDiagonalRightBottom
 }
 
 function scorePosition (board, row, col, deltaY, deltaX) {

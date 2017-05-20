@@ -31,7 +31,7 @@ minMax.max = function (state, alpha, beta, depth) {
       }
 
       // α = max(α, v)
-      alpha = Math.max(alpha, value.escore)
+      alpha = Math.max(alpha, value.score)
     }
   }
 
@@ -67,7 +67,7 @@ minMax.min = function (state, alpha, beta, depth) {
       }
 
       // β = min(β, v)
-      beta = Math.min(beta, value[1])
+      beta = Math.min(beta, value.score)
     }
   }
 
