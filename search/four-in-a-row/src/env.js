@@ -5,8 +5,8 @@ module.exports = {
   timePerMove: 1000,
   playerNames: [],
   botName: '',
-  myId: 1,
-  enemyId: 2,
+  myId: 0,    // set after
+  enemyId: 0, // set after
   cols: 7,
   rows: 6,
   round: 0,

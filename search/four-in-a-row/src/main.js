@@ -42,6 +42,7 @@ events['settings your_bot'] = function (botName) {
 
 events['settings your_botid'] = function (botId) {
   env.myId = botId
+  env.enemyId = botId == 1 ? 2 : 1
 }
 
 events['settings field_columns'] = function (cols) {
