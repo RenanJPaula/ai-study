@@ -16,10 +16,6 @@ Object.defineProperty(State.prototype, 'score', {
   set: function (score) { this._score = score }
 })
 
-State.prototype.utility = function () {
-  return 0
-}
-
 State.prototype.isTerminal = function () {
   return this.score === env.winScore ||
          this.score === env.losScore ||
