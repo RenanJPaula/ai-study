@@ -55,10 +55,10 @@ events['settings field_rows'] = function (rows) {
 
 events['update game round'] = function (round) {
   env.round = parseInt(round)
-  if (env.round < 7) {
+  if (env.round < 5) {
     env.depth = 4
   } else {
-    env.depth = 10
+    env.depth = 7
   }
 }
 

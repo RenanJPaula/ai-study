@@ -15,7 +15,7 @@ module.exports = {
   losScore: -100000,
   alpha: Number.MIN_VALUE,
   beta: Number.MAX_VALUE,
-  depth: 12, // set after
+  depth: 9, // set after
   limit: 1000,
   moveStartTime: 0 // set after
 }

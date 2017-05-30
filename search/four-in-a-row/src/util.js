@@ -17,8 +17,7 @@ util.parse = function (stringData) {
 }
 
 util.hasTime = function () {
-  var remaning = (new Date().getTime() - env.moveStartTime) + 20
-  console.log(remaning, env.limit, remaning < env.limit)
+  var remaning = (new Date().getTime() - env.moveStartTime) + 1000
   return remaning < env.limit
 }
 
