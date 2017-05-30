@@ -16,4 +16,10 @@ util.parse = function (stringData) {
   return board
 }
 
+util.hasTime = function () {
+  var remaning = (new Date().getTime() - env.moveStartTime) + 20
+  console.log(remaning, env.limit, remaning < env.limit)
+  return remaning < env.limit
+}
+
 module.exports = util

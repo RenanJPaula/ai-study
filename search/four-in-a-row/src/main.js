@@ -42,7 +42,7 @@ events['settings your_bot'] = function (botName) {
 
 events['settings your_botid'] = function (botId) {
   env.myId = botId
-  env.enemyId = botId == 1 ? 2 : 1
+  env.enemyId = botId === 1 ? 2 : 1
 }
 
 events['settings field_columns'] = function (cols) {
@@ -55,13 +55,21 @@ events['settings field_rows'] = function (rows) {
 
 events['update game round'] = function (round) {
   env.round = parseInt(round)
+  if (env.round < 7) {
+    env.depth = 4
+  } else {
+    env.depth = 10
+  }
 }
 
 events['update game field'] = function (field) {
   board = util.parse(field)
 }
 
-events['action move'] = function () {
+events['action move'] = function (time) {
+  env.moveStartTime = new Date().getTime()
+  env.limit = parseInt(time)
+
   console.log('place_disc ' + makeTurn(new State(board)))
 }
 

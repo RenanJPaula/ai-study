@@ -1,11 +1,12 @@
 'use strict'
 
 var env = require('../env')
+var util = require('../util')
 var minMax = {}
 
 minMax.max = function (state, alpha, beta, depth) {
   // if terminal (state) return utility(state)
-  if (depth === 0 || state.isTerminal()) {
+  if (depth === 0 || !util.hasTime() || state.isTerminal()) {
     return { col: -1, score: state.score }
   }
 
@@ -41,7 +42,7 @@ minMax.max = function (state, alpha, beta, depth) {
 
 minMax.min = function (state, alpha, beta, depth) {
   // if terminal (state) return utility(state)
-  if (depth === 0 || state.isTerminal()) {
+  if (depth === 0 || !util.hasTime() || state.isTerminal()) {
     return { col: -1, score: state.score }
   }
 
