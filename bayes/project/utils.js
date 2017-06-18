@@ -53,9 +53,16 @@ utils.selectFirstRecords = (qtd) => {
 utils.meanOf = (propName) => {
   return (dataset) => {
     let sum = dataset.reduce((sum, object) => {
-      return sum + object[propName]
+      return sum + parseInt(object[propName])
     }, 0)
     return sum / dataset.length
+  }
+}
+
+utils.assignTo = (object, propName) => {
+  return value => {
+    object[propName] = value
+    return object
   }
 }
 
