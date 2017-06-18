@@ -65,4 +65,27 @@ utils.calcIndividualProbability = (datasetInfo) => {
   return datasetInfo
 }
 
+utils.calcDistanceOf = (baseRecord) => {
+  const propsToAvaliate = []
+  for (var propName in baseRecord) {
+    if (baseRecord[propName] !== 'NA') propsToAvaliate.push(propName)
+  }
+
+  console.log(propsToAvaliate)
+
+  return (dataset = []) => {
+    dataset.forEach(datasetRecord => {
+      let distance = 0
+
+      propsToAvaliate.forEach(propName => {
+        distance += Math.abs(baseRecord[propName] - datasetRecord[propName])
+      })
+
+      datasetRecord.distance = distance
+    })
+
+    return Promise.resolve(dataset)
+  }
+}
+
 module.exports = utils
