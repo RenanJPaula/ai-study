@@ -1,0 +1,51 @@
+(AGE 
+    (1 . 10-19)
+    (2 . 20-29)
+    (3 . 30-39)
+    (4 . 40-44)
+    (5 . 45-49)
+    (6 . 50-54)
+    (7 . 55-59)
+    (8 . 60-64)
+    (9 . 65-69)
+    (10 . 70-79)
+    (11 . 80-89)
+    (12 . >=90))
+(GENERAL-HEALTH-STATUS 
+   (5 . poor) (4 . poor) (3 . average) (2 . good) (1 . good))
+(BULKY-DISEASE 
+   (1 . no) (2 . yes))
+(HISTOLOGICAL-CLASSIFICATION  
+   (1 . low-grade) (2 . high-grade))
+(CLINICAL-STAGE 
+   (1 . I) (2 . II1) (3 . II2) (4 . III) (5 . IV))
+(CLINICAL-PRESENTATION 
+   (1 . none) (3 . hemorrhage) (4 . perforation) (2 . obstruction))
+(CT&RT-SCHEDULE
+   (0 . none)
+   (1 . RT)
+   (2 . CT) 
+   (3 . CT-next-RT))
+(SURGERY  
+   (1 . none)
+   (2 . palliative)
+   (3 . curative))
+(BM-DEPRESSION 
+   (0 . no) (1 . no) (2 . yes)  (3 . no) (9 . no) ("NA" . no))
+(PERFORATION 
+   (1 . no)
+   (2 . yes))
+(HEMORRHAGE
+   (1 . no)
+   (2 . yes))
+(EARLY-RESULT
+   (1 . CR)
+   (2 . PR)
+   (3 . NC)
+   (4 . PD))
+(THERAPY-ADJUSTMENT
+   (0 . no) 
+   (1 . yes))
+(5-YEAR-RESULT 
+   (1 . alive)
+   (2 . death))
