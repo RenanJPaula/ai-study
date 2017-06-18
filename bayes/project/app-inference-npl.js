@@ -7,8 +7,13 @@ const completeRecords = path.resolve(__dirname, '../nhl/datasets/nhl-without-na.
 
 Promise.all([utils.csvToJson(incompleteRecords), utils.csvToJson(completeRecords)])
        .then(convertedData => {
-         const baseRecord = convertedData[0][0]
-         const dataset = convertedData[1]
+         const baseRecords = convertedData[0]
 
-         utils.calcDistanceOf(baseRecord)(dataset)
+         baseRecords.forEach(baseRecord => {
+           const dataset = convertedData[1]
+
+           utils.calcDistanceOf(baseRecord)(dataset)
+                .then(utils.sortBy('distance'))
+                .then(console.log)
+         })
        })

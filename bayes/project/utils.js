@@ -32,6 +32,20 @@ utils.propertieToJson = (propName) => {
   return (object) => JSON.stringify(object[propName])
 }
 
+utils.sortBy = (propName) => {
+  return dataset => {
+    return Promise.resolve(dataset.sort((a, b) => {
+      if (a[propName] > b[propName]) {
+        return 1
+      } else if (a[propName] < b[propName]) {
+        return -1
+      } else {
+        return 0
+      }
+    }))
+  }
+}
+
 utils.sumOccurrences = (dataset) => {
   const datasetInfo = {
     length: dataset.length,
@@ -70,8 +84,6 @@ utils.calcDistanceOf = (baseRecord) => {
   for (var propName in baseRecord) {
     if (baseRecord[propName] !== 'NA') propsToAvaliate.push(propName)
   }
-
-  console.log(propsToAvaliate)
 
   return (dataset = []) => {
     dataset.forEach(datasetRecord => {
