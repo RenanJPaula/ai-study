@@ -1,0 +1,23 @@
+Quantidade de dados: 20000
+
+- Com Outlier:
+  (outlier) Registro na linha 40 com 3 NA (10,3,2,1,1,2,0,NA,1,1,1,NA,NA,2)
+
+  GENERAL_HEALTH_STATUS: 5 NA
+  CT&RT_SCHEDULE: 3 NA
+  SURGERY: 2 NA
+  EARLY_RESULT: 4 NA
+  THERAPY_ADJUSTMENT: 19 NA
+
+- Sem Outlier:
+  GENERAL_HEALTH_STATUS: 5 NA
+  CT&RT_SCHEDULE: 3 NA
+  SURGERY: 1 NA
+  EARLY_RESULT: 3 NA
+  THERAPY_ADJUSTMENT: 18 NA
+
+- Diferenças nas probabilidades:
+  Em regeal todas mudaram devido ao tamanho do conjunto de dados ter mudado e nos valores removidos.
+  EARLY_RESULT: NA de 0.02920 para 0.02206 (-0.00714)
+  THERAPY_ADJUSTMENT: NA de 0.13869 para 0.13235 (-0.00634)
+  SURGERY: NA de 0.01460 para 0.00735 (-0.00725)

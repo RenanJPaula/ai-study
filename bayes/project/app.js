@@ -2,9 +2,10 @@
 
 const utils = require('./utils')
 const path = require('path')
+const csvPath = path.resolve(__dirname, '../nhl.csv')
 
-utils.csvToJson(path.resolve(__dirname, '../bc.csv'))
+utils.csvToJson(csvPath)
      .then(utils.sumOccurrences)
      .then(utils.calcIndividualProbability)
-     .then(utils.propertieToJsonBuilder('probabilityMap'))
+     .then(utils.propertieToJson('probabilityMap'))
      .then(console.log)

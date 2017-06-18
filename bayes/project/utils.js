@@ -28,7 +28,7 @@ utils.csvToJson = (csvPath) => {
   })
 }
 
-utils.propertieToJsonBuilder = (propName) => {
+utils.propertieToJson = (propName) => {
   return (object) => JSON.stringify(object[propName])
 }
 
