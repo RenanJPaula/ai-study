@@ -46,6 +46,19 @@ utils.sortBy = (propName) => {
   }
 }
 
+utils.selectFirstRecords = (qtd) => {
+  return (dataset) => dataset.slice(0, qtd)
+}
+
+utils.meanOf = (propName) => {
+  return (dataset) => {
+    let sum = dataset.reduce((sum, object) => {
+      return sum + object[propName]
+    }, 0)
+    return sum / dataset.length
+  }
+}
+
 utils.sumOccurrences = (dataset) => {
   const datasetInfo = {
     length: dataset.length,

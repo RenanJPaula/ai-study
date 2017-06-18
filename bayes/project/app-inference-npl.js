@@ -7,13 +7,19 @@ const completeRecords = path.resolve(__dirname, '../nhl/datasets/nhl-without-na.
 
 Promise.all([utils.csvToJson(incompleteRecords), utils.csvToJson(completeRecords)])
        .then(convertedData => {
-         const baseRecords = convertedData[0]
+        //  const baseRecords = convertedData[0]
+         const baseRecord = convertedData[0][0]
+         console.log(baseRecord)
 
-         baseRecords.forEach(baseRecord => {
-           const dataset = convertedData[1]
+        //  baseRecords.forEach(baseRecord => {
+         const dataset = convertedData[1]
 
-           utils.calcDistanceOf(baseRecord)(dataset)
+         utils.calcDistanceOf(baseRecord)(dataset)
                 .then(utils.sortBy('distance'))
-                .then(console.log)
-         })
+                .then(utils.selectFirstRecords(10))
+                .then(utils.meanOf('THERAPY_ADJUSTMENT'))
+                .then(mean => {
+                  console.log(Math.round(mean))
+                })
+        //  })
        })
