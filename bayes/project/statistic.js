@@ -2,22 +2,10 @@
 
 const statistic = {}
 const table = {}
-let marginalProb = null
 let dataset = null
-let propMap = null
-
-statistic.setMarginalProb = (obj) => {
-  marginalProb = obj
-  return Promise.resolve()
-}
 
 statistic.setDataset = (obj) => {
   dataset = obj
-  return Promise.resolve()
-}
-
-statistic.setPropMap = (obj) => {
-  propMap = obj
   return Promise.resolve()
 }
 
