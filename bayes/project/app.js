@@ -18,8 +18,9 @@ function resolveBC () {
            .then(statistic.calcProbMarginal('Age'))
            .then(statistic.calcProbMarginal('Location'))
            .then(statistic.calcProbCondicional('BC', ['Age', 'Location']))
-           .then(statistic.getGenetatedTable)
-           .then(console.log)
+           .then(() => {
+             console.log(JSON.stringify(statistic.getGenetatedTable()))
+           })
   })
 }
 

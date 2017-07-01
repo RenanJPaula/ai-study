@@ -26,20 +26,37 @@ statistic.getGenetatedTable = () => table
 statistic.calcProbCondicional = (node = '', dependencies = []) => {
   return () => {
     const propTable = table[node] = {}
+    let processQtd = 0
+    sumOccurrences()
+    normalizeValues(propTable)
 
-    dataset.forEach(record => {
-      let propName = record[node]
+    function sumOccurrences () {
+      dataset.forEach(record => {
+        if (!propTable[record[node]]) propTable[record[node]] = {}
+        let prop = propTable[record[node]]
 
-      dependencies.forEach(dependencie => {
-        propName += ` ${record[dependencie]}`
+        dependencies.forEach((dependencie, i) => {
+          if (i === dependencies.length - 1) {
+            if (!prop[record[dependencie]]) prop[record[dependencie]] = 0
+            prop[record[dependencie]]++
+            processQtd++
+          } else {
+            if (!prop[record[dependencie]]) prop[record[dependencie]] = {}
+            prop = prop[record[dependencie]]
+          }
+        })
       })
+    }
 
-      if (!propTable[propName]) propTable[propName] = 0
-      propTable[propName]++
-    })
-
-    for (var prop in propTable) {
-      propTable[prop] = (propTable[prop] / dataset.length).toFixed(5)
+    function normalizeValues (obj) {
+      for (var prop in obj) {
+        const value = obj[prop]
+        if (typeof value === 'object') {
+          normalizeValues(value)
+        } else {
+          obj[prop] = value / processQtd
+        }
+      }
     }
   }
 }
