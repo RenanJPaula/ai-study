@@ -1,6 +1,6 @@
 'use strict'
 
-const propMap = require('../bc/prop-map')
+const propMap = require('../prop-map')
 const statistic = {}
 const table = {}
 let dataset = null

@@ -12,15 +12,9 @@
       "LowInQuad":0.25075
    },
    "BreastDensity":{
-      "high":{
-
-      },
-      "medium":{
-
-      },
-      "low":{
-
-      }
+      "high":0.30145,
+      "medium":0.4991,
+      "low":0.19945
    },
    "BC":{
       "No":{

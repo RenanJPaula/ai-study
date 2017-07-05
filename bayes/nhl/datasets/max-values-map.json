@@ -1,0 +1,16 @@
+{
+  "AGE": { "value": 12 },
+  "GENERAL_HEALTH_STATUS": { "value": 5 },
+  "BULKY_DISEASE": { "value": 2 },
+  "HISTOLOGICAL_CLASSIFICATION": { "value": 2 },
+  "CLINICAL_STAGE": { "value": 5 },
+  "CLINICAL_PRESENTATION": { "value": 4 },
+  "CT&RT_SCHEDULE": { "value": 4, "beginWithZero": true },
+  "SURGERY": { "value": 3 },
+  "BM_DEPRESSION": {"value": 2, "map": true, "mapValues": { "0": 1, "1":1, "3":1, "9":1, "2":2 }},
+  "PERFORATION": { "value": 2 },
+  "HEMORRHAGE": { "value": 2 },
+  "EARLY_RESULT": { "value": 4 },
+  "THERAPY_ADJUSTMENT": { "value": 2, "beginWithZero": true },
+  "YEAR_RESULT": { "value": 2 }
+}
