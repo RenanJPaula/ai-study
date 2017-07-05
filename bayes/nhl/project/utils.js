@@ -120,4 +120,12 @@ utils.calcDistanceOf = (baseRecord) => {
   }
 }
 
+utils.getNAProp = (record) => {
+  for (var propName in record) {
+    if (record[propName] === 'NA') return propName
+  }
+
+  throw new Error('not found NA')
+}
+
 module.exports = utils

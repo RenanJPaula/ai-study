@@ -1,6 +1,7 @@
 'use strict'
 
-const propMap = require('../prop-map')
+const propMap = {} // require('../datasets/prop-map')
+const maxValuesMap = require('../datasets/max-values-map')
 const statistic = {}
 const table = {}
 let dataset = null
@@ -95,6 +96,33 @@ statistic.calcProbMarginal = function calcProbMarginal (attrName) {
       probTable[prop] = parseFloat((probTable[prop] / length).toFixed(5))
     }
   }
+}
+
+statistic.calcDistanceOf = (obj, dataset) => {
+  const propsToAvaliate = []
+  for (var propName in obj) {
+    if (obj[propName] !== 'NA') propsToAvaliate.push(propName)
+  }
+
+  dataset.forEach(datasetRecord => {
+    let distance = 0
+
+    propsToAvaliate.forEach(propName => {
+      let value = 0
+
+      if (maxValuesMap[propName].map) {
+        let mapValues = maxValuesMap[propName].mapValues
+        value = Math.abs(mapValues[obj[propName]] - mapValues[datasetRecord[propName]])
+      } else if (maxValuesMap[propName].beginWithZero) {
+        value = Math.abs((obj[propName] + 1) - (datasetRecord[propName] + 1))
+      } else {
+        value = Math.abs(obj[propName] - datasetRecord[propName])
+      }
+      distance += parseFloat((value / maxValuesMap[propName].value).toFixed(5))
+    })
+
+    datasetRecord.distance = distance
+  })
 }
 
 module.exports = statistic
