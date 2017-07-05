@@ -1,5 +1,6 @@
 'use strict'
 
+const propMap = require('../bc/prop-map')
 const statistic = {}
 const table = {}
 let dataset = null
@@ -17,6 +18,7 @@ statistic.calcProbCondicional = (node = '', dependencies = []) => {
     let processQtd = 0
     sumOccurrences()
     normalizeValues(propTable)
+    transformInPercent(propTable)
 
     function sumOccurrences () {
       dataset.forEach(record => {
@@ -42,7 +44,36 @@ statistic.calcProbCondicional = (node = '', dependencies = []) => {
         if (typeof value === 'object') {
           normalizeValues(value)
         } else {
-          obj[prop] = value / processQtd
+          obj[prop] = parseFloat((value / processQtd).toFixed(5))
+        }
+      }
+    }
+
+    function transformInPercent (obj) {
+      const sumMap = {}
+      propMap[node].forEach((prop) => sumValues(obj[prop]))
+      propMap[node].forEach((prop) => divideBySum(obj[prop]))
+
+      function sumValues (obj, stack = '') {
+        for (let property in obj) {
+          if (typeof obj[property] === 'object') {
+            sumValues(obj[property], stack + '.' + property)
+          } else {
+            const key = stack + '.' + property
+            if (!sumMap[key]) sumMap[key] = 0
+            sumMap[key] += obj[property]
+          }
+        }
+      }
+
+      function divideBySum (obj, stack = '') {
+        for (let property in obj) {
+          if (typeof obj[property] === 'object') {
+            divideBySum(obj[property], stack + '.' + property)
+          } else {
+            const key = stack + '.' + property
+            obj[property] = parseFloat((obj[property] / sumMap[key]).toFixed(5))
+          }
         }
       }
     }
@@ -61,7 +92,7 @@ statistic.calcProbMarginal = function calcProbMarginal (attrName) {
     }
 
     for (var prop in probTable) {
-      probTable[prop] = (probTable[prop] / length).toFixed(5)
+      probTable[prop] = parseFloat((probTable[prop] / length).toFixed(5))
     }
   }
 }
