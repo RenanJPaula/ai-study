@@ -29,4 +29,28 @@ function resolveNAs () {
   })
 }
 
-resolveNAs()
+function resolveNhl () {
+  const dataset = require('../datasets/nhl-completed-dataset.json')
+
+  Promise.resolve(statistic.setDataset(dataset))
+   .then(statistic.calcProbMarginal('AGE'))
+   .then(statistic.calcProbMarginal('CLINICAL_PRESENTATION'))
+   .then(statistic.calcProbMarginal('CT&RT_SCHEDULE'))
+   .then(statistic.calcProbMarginal('SURGERY'))
+   .then(statistic.calcProbCondicional('GENERAL_HEALTH_STATUS', ['AGE']))
+   .then(statistic.calcProbCondicional('BULKY_DISEASE', ['AGE', 'HISTOLOGICAL_CLASSIFICATION', 'CLINICAL_STAGE']))
+   .then(statistic.calcProbCondicional('HISTOLOGICAL_CLASSIFICATION', ['AGE']))
+   .then(statistic.calcProbCondicional('CLINICAL_STAGE', ['AGE']))
+   .then(statistic.calcProbCondicional('CLINICAL_STAGE', ['AGE']))
+   .then(statistic.calcProbCondicional('BM_DEPRESSION', ['AGE', 'CT&RT_SCHEDULE']))
+   .then(statistic.calcProbCondicional('PERFORATION', ['CT&RT_SCHEDULE']))
+   .then(statistic.calcProbCondicional('HEMORRHAGE', ['CT&RT_SCHEDULE']))
+   .then(statistic.calcProbCondicional('EARLY_RESULT', ['BULKY_DISEASE', 'HISTOLOGICAL_CLASSIFICATION', 'CLINICAL_STAGE', 'CT&RT_SCHEDULE', 'SURGERY', 'THERAPY_ADJUSTMENT']))
+   .then(statistic.calcProbCondicional('THERAPY_ADJUSTMENT', ['BM_DEPRESSION', 'PERFORATION', 'HEMORRHAGE']))
+   .then(statistic.calcProbCondicional('5_YEAR_RESULT', ['AGE', 'BULKY_DISEASE', 'HISTOLOGICAL_CLASSIFICATION', 'CLINICAL_STAGE', 'EARLY_RESULT']))
+   .then(() => {
+     console.log(JSON.stringify(statistic.getGenetatedTable()))
+   })
+}
+
+resolveNhl()

@@ -1,6 +1,6 @@
 'use strict'
 
-const propMap = {} // require('../datasets/prop-map')
+const propMap = require('../datasets/prop-map')
 const maxValuesMap = require('../datasets/max-values-map')
 const statistic = {}
 const table = {}
