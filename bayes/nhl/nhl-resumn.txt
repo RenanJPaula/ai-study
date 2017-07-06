@@ -1,6 +1,6 @@
 Quantidade de dados: 137
 Quantidade de registros com NA: 30
-Quantidade de outliers: 1
+Quantidade de outliers: 2
 Quantidade de registros desconsiderando NA's: 107
 
 - Com Outlier:
